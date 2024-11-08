@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funkcje Pythona</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        pre {
+            background-color: #282c34;
+            color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .output {
+            background-color: #f1f1f1;
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .code-container {
+            margin-bottom: 30px;
+        }
+
+      a
+      {
+        text-decoration: none;
+        text-align: center;
+        color: white;  
+        margin-top: 5px;
+      }
+        .button
+        {
+            text-decoration: none;
+            background-color: #4CAF50;
+            height: 30px;
+            width: 90px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            justify-content: center; 
+            position: absolute;
+            left: 50%;
+            padding: 5px;
+            transform: translate(-50%, -50%);
+            border-radius:20px;
+        }
+        .button:hover
+        {
+            
+            margin-right: center ;
+            text-align: center;
+            background-color: #408f43;
+           
+            
+            
+        }
+    </style>
+</head>
+<body>
+
+<h1>Przykłady Funkcji w Pythonie</h1>
+<div class="button"><a href="index.html">Home Page</a>
+
+</div>
+<div class="code-container">
+    <h2>1. Funkcja suma - dodawanie dwóch liczb</h2>
+    <pre>
+def suma(x:float, y:float) -> float:
+    return (x + y)
+
+print(suma(2, 4))
+    </pre>
+    <div class="output">Wynik: 6</div>
+</div>
+
+<div class="code-container">
+    <h2>2. Funkcja pole_kola - pole koła</h2>
+    <pre>
+PI = 3.14
+def pole_kola(PI:float, r:float) -> float:
+    global x
+    x = 5
+    return PI * r * r
+
+print(pole_kola(PI, 5))
+print(x)
+    </pre>
+    <div class="output">Wynik: 78.5</div>
+    <div class="output">Wynik globalnej zmiennej x: 5</div>
+</div>
+
+<div class="code-container">
+    <h2>3. Funkcja witaj - powitanie</h2>
+    <pre>
+def witaj(imie:str, powitanie:str = 'siemano') -> str:
+    wynik = suma(3, 4)
+    return f"{powitanie}, {imie}"
+
+print(witaj("Pablo", "Witaj krolu zloty"))
+    </pre>
+    <div class="output">Wynik: Witaj krolu zloty, Pablo</div>
+</div>
+
+<div class="code-container">
+    <h2>4. Funkcja silnia - obliczanie silni</h2>
+    <pre>
+def silnia(n:int) -> int:
+    if n == 0:
+        return 1
+    return n * silnia(n - 1)
+
+print(silnia(5))
+    </pre>
+    <div class="output">Wynik: 120</div>
+</div>
+
+<div class="code-container">
+    <h2>5. Funkcja pi - zwrócenie wartości liczby Pi</h2>
+    <pre>
+def pi() -> float:
+    return 3.14
+
+print(pi())
+    </pre>
+    <div class="output">Wynik: 3.14</div>
+</div>
+
+<div class="code-container">
+    <h2>6. Funkcja suma_wielu - dodawanie wielu liczb</h2>
+    <pre>
+def suma_wielu(*args: int) -> int:
+    return sum(args)
+
+print(suma_wielu(5, 1, 5, 2, 5, 12, 5))
+    </pre>
+    <div class="output">Wynik: 35</div>
+</div>
+
+<div class="code-container">
+    <h2>7. Funkcja celcjusz_to_fanhrenheit - przekształcanie Celsjusza na Fahrenheit</h2>
+    <pre>
+Tfah = 9 / 5
+def celcjusz_to_fanhrenheit(C):
+    return (C * Tfah + 32)
+
+print(celcjusz_to_fanhrenheit(-20))
+    </pre>
+    <div class="output">Wynik: -4.0</div>
+</div>
+
+<div class="code-container">
+    <h2>8. Funkcja filtr_l_parzystych - filtruj liczby parzyste</h2>
+    <pre>
+def filtr_l_parzystych(numbers: list[int]) -> list[int]:
+    return [num for num in numbers if num % 2 == 0]
+
+print(filtr_l_parzystych([2, 3, 4, 5]))
+    </pre>
+    <div class="output">Wynik: [2, 4]</div>
+</div>
+
+</body>
+</html>
