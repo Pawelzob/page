@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tłumaczenie kodu Pythona: System Rezerwacji Miejsc</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            margin-top: 0;
+        }
+        .code-block {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            font-family: "Courier New", Courier, monospace;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .explanation {
+            margin-top: 10px;
+        }
+        .explanation p {
+            line-height: 1.6;
+        }
+
+        .button
+        {
+            text-decoration: none;
+            background-color: #4CAF50;
+            height: 30px;
+            width: 90px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            justify-content: center; 
+            position: absolute;
+            left: 50%;
+            padding: 5px;
+            transform: translate(-50%, -50%);
+            border-radius:20px;
+        }
+        .button:hover
+        {
+            
+            margin-right: center ;
+            text-align: center;
+            background-color: #408f43;
+           
+            
+            
+        }
+        a
+      {
+        text-decoration: none;
+        text-align: center;
+        color: white;  
+        margin-top: 5px;
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tłumaczenie kodu Pythona - System Rezerwacji Miejsc</h1>
+    </header>
+    <div class="button"><a href="index.html">Home Page</a></div>
+    <main>
+        <div class="section">
+            <h2>1. Funkcja `print_seats`</h2>
+            <div class="code-block">
+                <code>
+def print_seats(seats: list):
+    j = 1
+    for i in seats:
+        if i == None:
+            print(f"{j} Wolne")
+        else:
+            print(f"{j} Zajęte przez {i}")
+        j += 1
+                </code>
+            </div>
+            <div class="explanation">
+                <p>Funkcja `print_seats` służy do wyświetlania wszystkich miejsc w systemie rezerwacji. Jej zadaniem jest sprawdzenie każdego miejsca w liście `seats`, aby zobaczyć, czy jest ono zajęte, czy wolne. Dla każdego miejsca wypisuje numer miejsca oraz informację o tym, czy jest ono wolne, czy zajęte przez konkretnego użytkownika.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Funkcja `add_reservation`</h2>
+            <div class="code-block">
+                <code>
+def add_reservation(seats: list):
+    try:
+        imie = str(input("Podaj imię: "))
+        numer = int(input("Podaj numer miejsca: "))
+        if numer > 10 or numer < 1:
+            print("Numer jest poza zakresem (1-10)")
+            return seats
+        if seats[numer - 1] is None:
+            seats[numer - 1] = imie
+            print(f"Miejsce zostało zajęte przez {imie} na numerze {numer}")
+        else:
+            print("Zajęte")
+            return seats
+    except ValueError:
+        print("Proszę podać prawidłowy numer")
+                </code>
+            </div>
+            <div class="explanation">
+                <p>Funkcja `add_reservation` pozwala na dodanie rezerwacji na wybrane miejsce. Użytkownik podaje swoje imię i numer miejsca, a funkcja sprawdza, czy miejsce jest dostępne (czyli czy jest puste). Jeśli tak, rezerwacja zostaje dodana. Jeśli nie, program informuje użytkownika, że dane miejsce jest już zajęte.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>3. Funkcja `remove_reservation`</h2>
+            <div class="code-block">
+                <code>
+def remove_reservation(seats: list):
+    try:
+        numer = int(input("Podaj numer miejsca, które chcesz usunąć: "))
+        if numer > 10 or numer < 1:
+            print("Numer jest poza zakresem (1-10)")
+            return seats
+        if seats[numer - 1] is not None:
+            seats[numer - 1] = None
+            print("Rezerwacja została usunięta")
+        else:
+            print("Miejsce nie ma rezerwacji")
+    except ValueError:
+        print("Proszę podać prawidłowy numer")
+                </code>
+            </div>
+            <div class="explanation">
+                <p>Funkcja `remove_reservation` pozwala na usunięcie rezerwacji z wybranego miejsca. Użytkownik podaje numer miejsca, które chce usunąć. Jeśli miejsce jest zarezerwowane, rezerwacja zostaje usunięta. Jeśli miejsce jest wolne, użytkownik dostaje informację, że nie ma rezerwacji do usunięcia.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>4. Funkcja `modify_reservation`</h2>
+            <div class="code-block">
+                <code>
+def modify_reservation(seats: list):
+    try:
+        numer = int(input("Podaj numer miejsca, które chcesz zmienić: "))
+        reservation = seats[numer - 1]
+        if numer > 10 or numer < 1:
+            print("Numer jest poza zakresem (1-10)")
+            return seats
+        if seats[numer - 1] is None:
+            print("Miejsce jest wolne")
+            return seats
+        seats[numer - 1] = None
+        new_number = int(input("Podaj nowy numer miejsca: "))
+        if seats[new_number - 1] is None:
+            seats[new_number - 1] = reservation
+            print("Miejsce zostało zmienione")
+        else:
+            print("To miejsce jest zajęte")
+    except ValueError:
+        print("Proszę podać prawidłowy numer")
+                </code>
+            </div>
+            <div class="explanation">
+                <p>Funkcja `modify_reservation` umożliwia zmianę rezerwacji na inne miejsce. Użytkownik podaje numer miejsca, które chce zmienić, a także nowy numer miejsca. Jeśli wybrane miejsce jest wolne, rezerwacja zostaje przeniesiona. W przypadku zajętego miejsca użytkownik zostaje o tym poinformowany.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>5. Funkcja `check_availability`</h2>
+            <div class="code-block">
+                <code>
+def check_availability(seats: list):
+    try:
+        ile_numerow = int(input("Ile chcesz sprawdzić numerów: "))
+        for _ in range(ile_numerow):
+            number = int(input("Podaj wybrane numery: "))
+            if seats[number - 1] is None:
+                print(f"Miejsce {number} wolne")
+            else:
+                print(f"Miejsce zajęte przez: ", seats[number - 1])
+    except ValueError:
+        print("Proszę podać prawidłowy numer")
+                </code>
+            </div>
+            <div class="explanation">
+                <p>Funkcja `check_availability` umożliwia użytkownikowi sprawdzenie dostępności wybranych miejsc. Użytkownik może wprowadzić numery miejsc, które chce sprawdzić, a program wypisuje, czy są one wolne, czy zajęte.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>6. Funkcja `add_multiple_reservations`</h2>
+            <div class="code-block">
+                <code>
+        def add_multiple_reservations(seats: list):
+            try:
+                while True:
+                    ile_miejsc = int(input("Ile miejsc chcesz zarezerwować: "))
+                    for i in range(ile_miejsc):
+                        while True:
+                            numer = int(input(f"Podaj numer miejsca {i + 1}: "))
+                            if seats[numer - 1] is None:
+                                imie = str(input("Podaj imię: "))
+                                seats[numer - 1] = imie
+                                break  # Zakończenie pętli, gdy miejsce zostało zarezerwowane
+                            else:
+                                print("To miejsce jest zajęte, wprowadź inne.")
+                    
+                    # Zapytanie, czy użytkownik chce dodać kolejne rezerwacje
+                    kontynuuj = input("Czy chcesz dokonać kolejnych rezerwacji? (tak/nie): ").lower()
+                    if kontynuuj != "tak":
+                        break  # Zakończenie pętli, jeśli użytkownik nie chce więcej rezerwacji
+        
+            except ValueError:
+                print("Wprowadziłeś nieprawidłowe dane. Spróbuj ponownie.")
+            except IndexError:
+                print("Podałeś numer miejsca spoza zakresu. Spróbuj ponownie.")
+                </code>
+            </div>
+            <div class="explanation">
+                <p>Funkcja `add_multiple_reservations` pozwala na zarezerwowanie wielu miejsc na raz. Program najpierw pyta, ile miejsc użytkownik chce zarezerwować, a następnie w pętli umożliwia wprowadzenie numeru miejsca i imienia rezerwującego.</p>
+                <p>Jeśli wybrane miejsce jest wolne (wartość `None`), zostaje ono zarezerwowane na imię podane przez użytkownika. Jeśli miejsce jest już zajęte, użytkownik jest proszony o podanie innego numeru.</p>
+                <p>Po dokonaniu rezerwacji użytkownik ma możliwość kontynuowania procesu rezerwacji lub zakończenia go, odpowiadając "tak" lub "nie" na pytanie.</p>
+                <p>Obsługiwane są błędy, takie jak nieprawidłowe dane wejściowe (np. nieprawidłowy numer miejsca) oraz próby wprowadzenia numeru spoza dostępnego zakresu.</p>
+            </div>
+        </div>
+        
+            <div class="section">
+                <h2>7. Funkcja `main`</h2>
+                <div class="code-block">
+                    <code>
+    def main(): 
+        seats = [None] * 10
+        while True: 
+            print("\nMenu:")
+            print("1. Wyświetl miejsca")
+            print("2. Zarezerwuj miejsce")
+            print("3. Usuń rezerwację")
+            print("4. Modyfikuj miejsce")
+            print("5. Wyjście z programu")
+            print("6. Sprawdzanie dostępności wielu miejsc")
+            print("7. Dodawanie wielokrotnej rezerwacji")
+            print("8. Anulowanie wszystkich rezerwacji")
+            
+            try:
+                choice = int(input("Wybierz opcję: "))
+                if choice == 1:
+                    print_seats(seats)
+                elif choice == 2:
+                    add_reservation(seats)
+                elif choice == 3:
+                    remove_reservation(seats)
+                elif choice == 4:
+                    modify_reservation(seats)
+                elif choice == 5:
+                    print("Koniec programu")
+                    break
+                elif choice == 6:
+                    check_availability(seats)
+                elif choice == 7:
+                    add_multiple_reservations(seats)
+                elif choice == 8:
+                    cancel_all_reservations(seats)
+                else:
+                    print("Nieprawidłowy wybór. Spróbuj ponownie.")
+            except ValueError:
+                print("Proszę podać prawidłowy numer opcji (1-8).")
+                    </code>
+                </div>
+                <div class="explanation">
+                    <p>Funkcja `main` pełni rolę głównego menu programu. Tworzy listę `seats` z 10 miejscami, które są początkowo wolne (zawierają `None`). Program działa w nieskończonej pętli, wyświetlając menu opcji do wyboru. Użytkownik wybiera jedną z opcji, np. wyświetlenie miejsc, rezerwację miejsca, usunięcie rezerwacji itp. Program będzie działał, dopóki użytkownik nie wybierze opcji wyjścia (opcja 5).</p>
+                    <p>Program obsługuje błędy, na przykład gdy użytkownik poda nieprawidłową liczbę lub wybierze opcję spoza dostępnych opcji.</p>
+                </div>
+            </div>
+        </main>
+    </body>
+    </html>
+    
