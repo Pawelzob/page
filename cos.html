@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tłumaczenie kodu Python</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet">
+</head>
+<body>
+    <div class="section">
+        <h2>6. Funkcja `add_multiple_reservations`</h2>
+        <pre><code class="language-python">
+def add_multiple_reservations(seats: list):
+    try:
+        while True:
+            ile_miejsc = int(input("Ile miejsc chcesz zarezerwować: "))
+            for i in range(ile_miejsc):
+                while True:
+                    numer = int(input(f"Podaj numer miejsca {i + 1}: "))
+                    if seats[numer - 1] is None:
+                        imie = str(input("Podaj imię: "))
+                        seats[numer - 1] = imie
+                        break  # Zakończenie pętli, gdy miejsce zostało zarezerwowane
+                    else:
+                        print("To miejsce jest zajęte, wprowadź inne.")
+            
+            # Zapytanie, czy użytkownik chce dodać kolejne rezerwacje
+            kontynuuj = input("Czy chcesz dokonać kolejnych rezerwacji? (tak/nie): ").lower()
+            if kontynuuj != "tak":
+                break  # Zakończenie pętli, jeśli użytkownik nie chce więcej rezerwacji
+
+    except ValueError:
+        print("Wprowadziłeś nieprawidłowe dane. Spróbuj ponownie.")
+    except IndexError:
+        print("Podałeś numer miejsca spoza zakresu. Spróbuj ponownie.")
+        </code></pre>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tłumaczenie kodu Pythona: System Rezerwacji Miejsc</title>
@@ -90,7 +91,7 @@
         <div class="section">
             <h2>1. Funkcja `print_seats`</h2>
             <div class="code-block">
-                <code>
+                <pre><code class="language-python">
 def print_seats(seats: list):
     j = 1
     for i in seats:
@@ -99,7 +100,7 @@ def print_seats(seats: list):
         else:
             print(f"{j} Zajęte przez {i}")
         j += 1
-                </code>
+                </code></pre>
             </div>
             <div class="explanation">
                 <p>Funkcja `print_seats` służy do wyświetlania wszystkich miejsc w systemie rezerwacji. Jej zadaniem jest sprawdzenie każdego miejsca w liście `seats`, aby zobaczyć, czy jest ono zajęte, czy wolne. Dla każdego miejsca wypisuje numer miejsca oraz informację o tym, czy jest ono wolne, czy zajęte przez konkretnego użytkownika.</p>
@@ -109,7 +110,7 @@ def print_seats(seats: list):
         <div class="section">
             <h2>2. Funkcja `add_reservation`</h2>
             <div class="code-block">
-                <code>
+                <pre><code class="language-python">
 def add_reservation(seats: list):
     try:
         imie = str(input("Podaj imię: "))
@@ -125,7 +126,7 @@ def add_reservation(seats: list):
             return seats
     except ValueError:
         print("Proszę podać prawidłowy numer")
-                </code>
+                </code></pre>
             </div>
             <div class="explanation">
                 <p>Funkcja `add_reservation` pozwala na dodanie rezerwacji na wybrane miejsce. Użytkownik podaje swoje imię i numer miejsca, a funkcja sprawdza, czy miejsce jest dostępne (czyli czy jest puste). Jeśli tak, rezerwacja zostaje dodana. Jeśli nie, program informuje użytkownika, że dane miejsce jest już zajęte.</p>
@@ -135,7 +136,7 @@ def add_reservation(seats: list):
         <div class="section">
             <h2>3. Funkcja `remove_reservation`</h2>
             <div class="code-block">
-                <code>
+                <pre><code class="language-python">
 def remove_reservation(seats: list):
     try:
         numer = int(input("Podaj numer miejsca, które chcesz usunąć: "))
@@ -149,7 +150,7 @@ def remove_reservation(seats: list):
             print("Miejsce nie ma rezerwacji")
     except ValueError:
         print("Proszę podać prawidłowy numer")
-                </code>
+                </code></pre>
             </div>
             <div class="explanation">
                 <p>Funkcja `remove_reservation` pozwala na usunięcie rezerwacji z wybranego miejsca. Użytkownik podaje numer miejsca, które chce usunąć. Jeśli miejsce jest zarezerwowane, rezerwacja zostaje usunięta. Jeśli miejsce jest wolne, użytkownik dostaje informację, że nie ma rezerwacji do usunięcia.</p>
@@ -159,7 +160,7 @@ def remove_reservation(seats: list):
         <div class="section">
             <h2>4. Funkcja `modify_reservation`</h2>
             <div class="code-block">
-                <code>
+                <pre><code class="language-python">
 def modify_reservation(seats: list):
     try:
         numer = int(input("Podaj numer miejsca, które chcesz zmienić: "))
@@ -179,7 +180,7 @@ def modify_reservation(seats: list):
             print("To miejsce jest zajęte")
     except ValueError:
         print("Proszę podać prawidłowy numer")
-                </code>
+                </code></pre>
             </div>
             <div class="explanation">
                 <p>Funkcja `modify_reservation` umożliwia zmianę rezerwacji na inne miejsce. Użytkownik podaje numer miejsca, które chce zmienić, a także nowy numer miejsca. Jeśli wybrane miejsce jest wolne, rezerwacja zostaje przeniesiona. W przypadku zajętego miejsca użytkownik zostaje o tym poinformowany.</p>
@@ -189,7 +190,7 @@ def modify_reservation(seats: list):
         <div class="section">
             <h2>5. Funkcja `check_availability`</h2>
             <div class="code-block">
-                <code>
+                <pre><code class="language-python">
 def check_availability(seats: list):
     try:
         ile_numerow = int(input("Ile chcesz sprawdzić numerów: "))
@@ -201,17 +202,18 @@ def check_availability(seats: list):
                 print(f"Miejsce zajęte przez: ", seats[number - 1])
     except ValueError:
         print("Proszę podać prawidłowy numer")
-                </code>
+    </code></pre>
             </div>
             <div class="explanation">
                 <p>Funkcja `check_availability` umożliwia użytkownikowi sprawdzenie dostępności wybranych miejsc. Użytkownik może wprowadzić numery miejsc, które chce sprawdzić, a program wypisuje, czy są one wolne, czy zajęte.</p>
             </div>
         </div>
 
+      
         <div class="section">
             <h2>6. Funkcja `add_multiple_reservations`</h2>
             <div class="code-block">
-                <code>
+                <pre><code class="language-python">
         def add_multiple_reservations(seats: list):
             try:
                 while True:
@@ -235,7 +237,7 @@ def check_availability(seats: list):
                 print("Wprowadziłeś nieprawidłowe dane. Spróbuj ponownie.")
             except IndexError:
                 print("Podałeś numer miejsca spoza zakresu. Spróbuj ponownie.")
-                </code>
+                </code></pre>
             </div>
             <div class="explanation">
                 <p>Funkcja `add_multiple_reservations` pozwala na zarezerwowanie wielu miejsc na raz. Program najpierw pyta, ile miejsc użytkownik chce zarezerwować, a następnie w pętli umożliwia wprowadzenie numeru miejsca i imienia rezerwującego.</p>
@@ -244,11 +246,14 @@ def check_availability(seats: list):
                 <p>Obsługiwane są błędy, takie jak nieprawidłowe dane wejściowe (np. nieprawidłowy numer miejsca) oraz próby wprowadzenia numeru spoza dostępnego zakresu.</p>
             </div>
         </div>
+
+           
+       
         
             <div class="section">
                 <h2>7. Funkcja `main`</h2>
                 <div class="code-block">
-                    <code>
+                    <pre><code class="language-python">
     def main(): 
         seats = [None] * 10
         while True: 
@@ -285,7 +290,7 @@ def check_availability(seats: list):
                     print("Nieprawidłowy wybór. Spróbuj ponownie.")
             except ValueError:
                 print("Proszę podać prawidłowy numer opcji (1-8).")
-                    </code>
+            </code></pre>
                 </div>
                 <div class="explanation">
                     <p>Funkcja `main` pełni rolę głównego menu programu. Tworzy listę `seats` z 10 miejscami, które są początkowo wolne (zawierają `None`). Program działa w nieskończonej pętli, wyświetlając menu opcji do wyboru. Użytkownik wybiera jedną z opcji, np. wyświetlenie miejsc, rezerwację miejsca, usunięcie rezerwacji itp. Program będzie działał, dopóki użytkownik nie wybierze opcji wyjścia (opcja 5).</p>
@@ -294,5 +299,8 @@ def check_availability(seats: list):
             </div>
         </main>
     </body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
     </html>
     
