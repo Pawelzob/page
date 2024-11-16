@@ -126,3 +126,13 @@ image
     text-align: center;
     font-family: Arial, sans-serif;
 }
+
+.git
+{
+    text-decoration: none;
+    text-align: center;
+    color: white;  
+    margin-top: 5px;
+    text-decoration: none;
+}
+
