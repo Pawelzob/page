@@ -149,7 +149,36 @@ def cancel_all_reservations(seats: list):
         print(f"Wszystkie rezerwacje dla {imie} zostały anulowane.")
     else:
         print(f"Nie znaleziono żadnych rezerwacji dla {imie}.")
+
+
+def save_seats_to_file(seats: list):
+    with open('kino.csv', 'wt') as plik_zapis:
+        seats = ["wolne" if element is None else element for element in seats]
+        for idx, seat in enumerate(seats, 1):  # zaczynamy numerację od 1
+            plik_zapis.write(f"{idx}. {seat}\n")
+
+            
+def load_seats_from_file():
+    seats=[]
+    try:
+        with open('kino.csv', 'rt') as plik_odczyt:
+            for line in plik_odczyt:
+                # Usuwamy ewentualne białe znaki na końcu i dzielimy linie na numer i stan
+                _, status = line.strip().split('. ', 1)
+                seats.append(None if status == "wolne" else status)
+    except FileNotFoundError:
+        print("Plik 'kino.csv' nie istnieje. Tworzę nowy.")
+        seats = [None]*10
+    return seats
+     
+   
+
+          
     
+        
+
+           
+
   
 
 
@@ -157,7 +186,7 @@ def cancel_all_reservations(seats: list):
 
 
 def main(): #funkcja ktora robi za menu aplikacji
-     seats = [None]*10
+     seats = load_seats_from_file()
      while True: # petla wyswietlajaca menu
         print("\nMenu:")
         print("1. Wyświetl miejsca")
@@ -171,9 +200,11 @@ def main(): #funkcja ktora robi za menu aplikacji
 
             #tutaj uzytkownik wprowadza numer (1-5) i wykonuje sie wybrana funkcja
         try:
+           
+            
             choice = int(input("Wybierz opcje: "))
             if choice == 1:
-                print_seats(seats)
+                print_seats(seats)             
             elif choice == 2 :
                 add_reservation(seats)
             elif choice ==3:
@@ -189,10 +220,13 @@ def main(): #funkcja ktora robi za menu aplikacji
                  add_multiple_reservations(seats)
             elif choice == 8:
                 cancel_all_reservations(seats)
+            elif choice == 9:
+                save_seats_to_file(seats)
+                
             #obsługa błedów
             else:
                 print("Nieprawidłowy wybór. Sprobuj ponownie")
-            
+            save_seats_to_file(seats)
         except ValueError:
             print("Prosze podac prawidlowy numer opcji (1-5)")
 
